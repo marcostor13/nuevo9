@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center align-items-center flex-column content image" [ngStyle]="{'background-image': 'url(/assets/img/login-background.jpg)'}">
+
+    <div (keyup.enter)="login()" class="d-flex justify-content-center align-items-center flex-column bg-white p-5">
+
+        <img src="/assets/img/logo.svg" alt="BINTERACTION">
+        <input type="email" class="text-center text-color1" placeholder="Correo" [(ngModel)]="form.email">
+        <input type="password" class="text-center mt-2 text-color1" placeholder="Contraseña" [(ngModel)]="form.password">
+        <button (click)="login()" class="btn1 col-12 mt-2">INGRESAR</button>
+    </div>
+    
+</div>
+
+<p-toast></p-toast>

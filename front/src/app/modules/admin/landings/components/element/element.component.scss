@@ -1,0 +1,22 @@
+@import './../../../../../../styles/variables';
+
+.edit{
+    border: none;
+    background-color: $color1;
+    i{
+        color: white;
+    }
+}
+
+.delete{
+    border: none;
+    background-color: $color5;
+    i{
+        color: white;
+    }
+}
+
+
+.no-color{
+    background-color: blue;
+}

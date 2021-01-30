@@ -1,0 +1,20 @@
+.cont{
+    .background-image{
+        background-color: black;
+        min-width: 100vw;        
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;   
+    } 
+    .dom{
+        
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+}
+
+button{
+    min-height: 38px;
+    border-style: solid;
+}
+

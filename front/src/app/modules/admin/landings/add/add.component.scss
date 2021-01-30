@@ -1,0 +1,32 @@
+@import './../../../../../styles/variables';
+
+.content{
+    min-height: 400px !important;
+}
+
+button:hover{
+    opacity: .7;
+}
+
+.btn2:hover{
+    opacity: 1 !important;
+}
+
+.edit{
+    border: none;
+    background-color: $color1;
+    i{
+        color: white;
+    }
+}
+
+.delete{
+    border: none;
+    background-color: $color5;
+    i{
+        color: white;
+    }
+}
+
+
+

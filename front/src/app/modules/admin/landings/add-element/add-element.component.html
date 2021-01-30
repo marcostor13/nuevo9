@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<div class="container pb-5">
+
+    <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    
+    <div class="col-12 mt-5 row m-0 justify-content-between align-items-center">
+        <h5>{{elementSelectedIndex ? 'Editar elemento': 'Agregar elemento'}}</h5>
+        <button (click)="back()" class="btn1"><i class="pi pi-angle-left"></i> Regresar</button>
+    </div>
+
+    <div class="content col-12 p-0 mt-5">
+        <p-dropdown 
+        [disabled]="elementSelectedIndex"
+        [options]="selectElements" 
+        [(ngModel)]="elementType" 
+        optionLabel="name" 
+        optionValue="name" 
+        styleClass="col-12 p-0 inputs"
+        placeholder="Seleccione"
+        ></p-dropdown>
+        <ng-container *ngIf="elementType">
+            <app-element [elementType]="elementType" (send)="saveElement($event)"></app-element>                       
+        </ng-container>
+    </div>
+</div>

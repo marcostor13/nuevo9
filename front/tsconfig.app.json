@@ -1,0 +1,22 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist/front",
+    "types": [],
+    "baseUrl": "./",
+    "paths": {
+      "@reducers/*": ["src/app/store/reducers/*"],
+      "@actions/*": ["src/app/store/actions/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@services/*": ["src/app/services/*"],
+    },
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}

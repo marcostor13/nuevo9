@@ -1,0 +1,14 @@
+<div>
+    <ul class="list-unstyled col-12 m-0 bg-color1 p-0">
+        <li [routerLink]="['/']" [ngClass]="{'active': path == '/'}" class="cursor pl-5 p-3 text-white">
+            <fa-icon [icon]="faTachometerAlt"></fa-icon>
+            <label class="ml-4">Dashboard</label>
+        </li>      
+        <li (click)="confirm($event)" class="cursor pl-5 p-3 text-white">
+            <fa-icon [icon]="faDoorOpen"></fa-icon>
+            <label class="ml-4">Logout</label>
+        </li>
+    </ul>
+</div>
+
+<p-confirmPopup></p-confirmPopup>

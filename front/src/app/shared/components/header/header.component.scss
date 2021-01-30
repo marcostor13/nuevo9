@@ -1,0 +1,15 @@
+@import '../../../../styles/variables';
+
+header{
+    .logo{
+        max-width: 140px;
+        min-width: 140px;
+    }
+    .menu{
+        label{
+            min-width: 40px;
+            min-height: 4px;
+            background-color: $color1;
+        }
+    }    
+}

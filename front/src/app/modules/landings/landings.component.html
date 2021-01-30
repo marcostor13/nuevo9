@@ -1,0 +1,84 @@
+<div class="cont" *ngIf="landing">
+    <div class="background">
+        <!-- <div class="background-opacity" [style]="{'opacity': landing.opacity/100}"></div> -->
+        <div class="background-image" [style]="{'background-image': 'url('+landing.backgroundURL+')', 'background-color': landing.backgroundColor}">            
+            <div class="p-4 dom" [style]="{'background-color': 'rgba(0, 0, 0, '+landing.opacity/100+')'}">
+                <div *ngIf="landing.logoURL" class="row m-0 justify-content-center align-items-center">
+                    <img class="logo" [src]="landing.logoURL">
+                </div>
+    
+                <ng-container *ngIf="!validation" >
+                    <div class="bg-color4 rounded mt-4 p-3">
+                        <div class="col-12 row justify-content-center align-items-center">
+                            <label class="col-12 text-center">Ingrese los 4 últimos dígitos de su RUT</label>
+                            <input [ngClass]="{'invalid': invalidRut}" (keyup)="validateRut($event.target.value)" class="text-center" type="number">
+                            <span *ngIf="invalidRut" class="text-danger mt-1">No coincide</span>                        
+                        </div>
+                    </div>
+                </ng-container>
+    
+                <ng-container *ngIf="validation && !response">
+                    <div *ngFor="let el of landing.elements" class="row m-0 justify-content-center">
+                        <ng-container [ngSwitch]="el.type">
+                            
+                            <!-- IMAGEN -->
+                            <div *ngSwitchCase="'Imagen'" class="mt-2">
+                                <img class="{{el.class}}" [src]="el.src" [alt]="el.name" width="{{el.width}}" height="auto" (click)="redirect(el.redirect)">
+                            </div>
+                            <!-- IMAGEN -->
+    
+                            <!-- TEXTO -->
+                            <div *ngSwitchCase="'Texto'" class="mt-2">
+                                <p class="{{el.class}} text-center" [style]="{'font-size': el.fontSize+'pt', 'font-weight': el.fontWeight, 'color': el.color}">{{getText(el.text)}}</p>
+                            </div>
+                            <!-- TEXTO -->
+    
+                            <!-- FORMULARIO -->
+                            <form *ngSwitchCase="'Formulario'" class="mt-2 col-12" (submit)="sendForm($event, el)">
+                                <div class="mt-2 {{el.class}}">
+                                    <div *ngFor="let input of el.inputs" class="row m-0 mt-2">
+                                        <label class="col-12 {{input.labelClass}}">{{input.name}}</label>
+                                        <input id="{{input.name}}" type="text" [placeholder]="input.placeholder" class="col-12 {{input.class}}" [disabled]="input.disabled" [ngStyle]="{'background-color': input.backgroundColor, 'color': input.textColor, 'border-color': input.borderColor, 'border-width': input.borderWidth}" [required]=input.required  >
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <button class="p-0 col-12 {{el.buttonClass}}" [ngStyle]="{'background-color': el.buttonBackgroundColor, 'color': el.buttonTextColor, 'border-color': el.buttonBorderColor, 'border-width': el.buttonBorderWidth+'px'}" type="submit" >Enviar</button>
+                                </div>                            
+                            </form>                        
+                            <!-- FORMULARIO -->
+    
+                            <!-- ICONOS -->
+                            <div *ngSwitchCase="'Iconos'" class="mt-2 col-12 row justify-content-center align-items-center">   
+                                <img *ngFor="let icon of el.icons" class="row m-0 mt-2 ml-2 cursor {{icon.class}}" [width]="icon.width" [src]="icon.image" (click)="redirect(icon.redirect)">
+                            </div>                        
+                            <!-- ICONOS -->
+    
+                            <!-- CALENDARIO -->
+                            <form *ngSwitchCase="'Calendario'" class="mt-2 col-12 p-0 m-0 row justify-content-center align-items-center" (submit)="sendCalendar(el)">   
+                                <label [ngStyle]="{'font-size': el.labelFontSize+'pt', 'color': el.labelColor}">{{el.label}}</label>
+                                <p-calendar placeholder="" [required]="true" [inline]="el.inline" [minDate]="getMinDate(el.minToday)" class="col-12 {{el.class}}" [style]="{'min-width': '100%'}" [panelStyle]="{'min-width': '100%'}" (onSelect)="calendar = $event" [inputStyle]="{'background-color': el.backgroundColor, 'color': el.textColor, 'border-color': el.borderColor, 'border-width': el.borderWidth}" dateFormat="dd.mm.yy"></p-calendar>
+                                <div class="mt-3 col-12">
+                                    <button class="p-0 col-12 {{el.buttonClass}}" [ngStyle]="{'background-color': el.buttonBackgroundColor, 'color': el.buttonTextColor, 'border-color': el.buttonBorderColor, 'border-width': el.buttonBorderWidth+'px'}" type="submit" >Enviar</button>
+                                </div>
+                            </form>                        
+                            <!-- CALENDARIO -->
+        
+        
+                            <div *ngSwitchDefault>output2</div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+    
+                <ng-container *ngIf="response" >
+                    <div class="bg-color4 rounded mt-4 p-3">
+                        <div class="col-12 row justify-content-center align-items-center">
+                            {{response}}                               
+                        </div>
+                    </div>
+                </ng-container>
+    
+            </div>
+        </div>
+        
+    </div>
+</div>

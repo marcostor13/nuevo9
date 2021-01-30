@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="container pb-5">
+
+    <p-messages [closable]="true"></p-messages>
+    <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+    <div class="col-12 mt-5 row m-0 justify-content-between align-items-center">
+        <h5>Landings</h5>
+        <button (click)="back()" class="btn1"><i class="pi pi-angle-left"></i>  Regresar</button>
+    </div>
+
+    <div class="col-12 mt-5 d-flex flex-wrap">       
+
+        <div class="col-12 mt-2">
+            <div>
+                <button (click)="redirectCreate()" class="btn2"><i class="pi pi-plus"></i> Crear</button>
+            </div>
+            
+            <div class="mt-3">
+                <p-orderList [value]="landings" filterBy="name">
+                    <ng-template let-el pTemplate="item">
+                        <div class="d-flex justify-content-between pl-2 pr-2">
+                            <span >{{el.name}}</span>
+                            <div>
+                                <button class="view" (click)="viewLanding(el)"><i class="pi pi-eye"></i></button>
+                                <button class="edit" (click)="editLanding(el)"><i class="pi pi-pencil"></i></button>
+                                <button class="delete" (click)="deleteConfirmation(el._id, i)"><i class="pi pi-trash"></i></button>
+                            </div>                            
+                        </div>
+                    </ng-template>
+                </p-orderList>
+            </div>
+        </div>         
+    </div>
+
+    
+
+</div>
+
